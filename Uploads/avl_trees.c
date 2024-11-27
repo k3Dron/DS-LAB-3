@@ -28,6 +28,7 @@ int max(int a, int b) {
 }
 
 struct Node* rightRotate(struct Node* y) {
+    printf("Right rotation performed\n");
     struct Node* x = y->left;
     struct Node* T2 = x->right;
     x->right = y;
@@ -38,6 +39,7 @@ struct Node* rightRotate(struct Node* y) {
 }
 
 struct Node* leftRotate(struct Node* x) {
+    printf("Left rotation performed\n");
     struct Node* y = x->right;
     struct Node* T2 = y->left;
     y->left = x;
@@ -61,6 +63,7 @@ struct Node* insert(struct Node* node, int key) {
     else if (key > node->key)
         node->right = insert(node->right, key);
     else
+        printf("Key already present");
         return node;
     node->height = 1 + max(getHeight(node->left), getHeight(node->right));
     int balance = getBalanceFactor(node);
@@ -95,7 +98,19 @@ int main() {
     root = insert(root, 40);
     root = insert(root, 50);
     root = insert(root, 25);
-    printf("In-order traversal of the constructed AVL tree is \n");
+    root = insert(root, 43);
+    root = insert(root, 3);
+    root = insert(root, 76);
+    root = insert(root, 45);
+    root = insert(root, 23);
+    root = insert(root, 89);
+    root = insert(root, 66);
+    root = insert(root, 56);
+    root = insert(root, 99);
+    root = insert(root, 900);
+    root = insert(root, 88);
+    
+    printf("In-order traversal: ");
     inOrder(root);
     return 0;
 }
